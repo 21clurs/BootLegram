@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,13 +12,14 @@
 		D7FC3993B39A6502162F7168 /* Pods_BootLegram_BootLegramUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3177A398C3174B83BF0CCA1 /* Pods_BootLegram_BootLegramUITests.framework */; };
 		F90D408D24B3E39B00F0EDE3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F90D408C24B3E39B00F0EDE3 /* AppDelegate.m */; };
 		F90D409024B3E39B00F0EDE3 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F90D408F24B3E39B00F0EDE3 /* SceneDelegate.m */; };
-		F90D409324B3E39B00F0EDE3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F90D409224B3E39B00F0EDE3 /* ViewController.m */; };
 		F90D409624B3E39B00F0EDE3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F90D409424B3E39B00F0EDE3 /* Main.storyboard */; };
 		F90D409824B3E39C00F0EDE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F90D409724B3E39C00F0EDE3 /* Assets.xcassets */; };
 		F90D409B24B3E39C00F0EDE3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F90D409924B3E39C00F0EDE3 /* LaunchScreen.storyboard */; };
 		F90D409E24B3E39C00F0EDE3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F90D409D24B3E39C00F0EDE3 /* main.m */; };
 		F90D40A824B3E39C00F0EDE3 /* BootLegramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F90D40A724B3E39C00F0EDE3 /* BootLegramTests.m */; };
 		F90D40B324B3E39C00F0EDE3 /* BootLegramUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F90D40B224B3E39C00F0EDE3 /* BootLegramUITests.m */; };
+		F90D40C324B502FF00F0EDE3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F90D40C224B502FF00F0EDE3 /* LoginViewController.m */; };
+		F90D40C624B511FA00F0EDE3 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F90D40C524B511FA00F0EDE3 /* FeedViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,8 +54,6 @@
 		F90D408C24B3E39B00F0EDE3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F90D408E24B3E39B00F0EDE3 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		F90D408F24B3E39B00F0EDE3 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		F90D409124B3E39B00F0EDE3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F90D409224B3E39B00F0EDE3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		F90D409524B3E39B00F0EDE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F90D409724B3E39C00F0EDE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F90D409A24B3E39C00F0EDE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -66,6 +65,10 @@
 		F90D40AE24B3E39C00F0EDE3 /* BootLegramUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BootLegramUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F90D40B224B3E39C00F0EDE3 /* BootLegramUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BootLegramUITests.m; sourceTree = "<group>"; };
 		F90D40B424B3E39C00F0EDE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F90D40C124B502FF00F0EDE3 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		F90D40C224B502FF00F0EDE3 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		F90D40C424B511FA00F0EDE3 /* FeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
+		F90D40C524B511FA00F0EDE3 /* FeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +109,6 @@
 				AB770BE9E58887535D3F6827 /* Pods-BootLegramTests.debug.xcconfig */,
 				E7C5CB88DC8F87B68CF97362 /* Pods-BootLegramTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -145,12 +147,11 @@
 		F90D408A24B3E39B00F0EDE3 /* BootLegram */ = {
 			isa = PBXGroup;
 			children = (
+				F90D40C024B502E900F0EDE3 /* View Controllers */,
 				F90D408B24B3E39B00F0EDE3 /* AppDelegate.h */,
 				F90D408C24B3E39B00F0EDE3 /* AppDelegate.m */,
 				F90D408E24B3E39B00F0EDE3 /* SceneDelegate.h */,
 				F90D408F24B3E39B00F0EDE3 /* SceneDelegate.m */,
-				F90D409124B3E39B00F0EDE3 /* ViewController.h */,
-				F90D409224B3E39B00F0EDE3 /* ViewController.m */,
 				F90D409424B3E39B00F0EDE3 /* Main.storyboard */,
 				F90D409724B3E39C00F0EDE3 /* Assets.xcassets */,
 				F90D409924B3E39C00F0EDE3 /* LaunchScreen.storyboard */,
@@ -176,6 +177,17 @@
 				F90D40B424B3E39C00F0EDE3 /* Info.plist */,
 			);
 			path = BootLegramUITests;
+			sourceTree = "<group>";
+		};
+		F90D40C024B502E900F0EDE3 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F90D40C124B502FF00F0EDE3 /* LoginViewController.h */,
+				F90D40C224B502FF00F0EDE3 /* LoginViewController.m */,
+				F90D40C424B511FA00F0EDE3 /* FeedViewController.h */,
+				F90D40C524B511FA00F0EDE3 /* FeedViewController.m */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -416,7 +428,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F90D409324B3E39B00F0EDE3 /* ViewController.m in Sources */,
+				F90D40C324B502FF00F0EDE3 /* LoginViewController.m in Sources */,
+				F90D40C624B511FA00F0EDE3 /* FeedViewController.m in Sources */,
 				F90D408D24B3E39B00F0EDE3 /* AppDelegate.m in Sources */,
 				F90D409E24B3E39C00F0EDE3 /* main.m in Sources */,
 				F90D409024B3E39B00F0EDE3 /* SceneDelegate.m in Sources */,
