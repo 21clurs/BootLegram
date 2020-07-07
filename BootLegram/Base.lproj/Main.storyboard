@@ -101,6 +101,11 @@
                                 <action selector="didTapLogout:" destination="fnD-5e-WGx" id="LI0-pa-MyJ"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="insta_camera_btn" id="1EM-r0-cNU">
+                            <connections>
+                                <segue destination="llk-fq-x2D" kind="presentation" id="Kkj-11-48D"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="teh-kr-xwO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -138,7 +143,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="dTv-Ca-ybL" kind="relationship" relationship="viewControllers" id="bxN-Be-Srn"/>
-                        <segue destination="llk-fq-x2D" kind="relationship" relationship="viewControllers" id="Zw9-UW-PnF"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ndb-u3-hP7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -212,7 +216,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2430.434782608696" y="414.50892857142856"/>
+            <point key="canvasLocation" x="3783" y="-279"/>
         </scene>
         <!--New Post-->
         <scene sceneID="tdX-73-SnN">
@@ -231,7 +235,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="naq-g3-Qz7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1773.913043478261" y="414.50892857142856"/>
+            <point key="canvasLocation" x="3126" y="-279"/>
         </scene>
     </scenes>
     <resources>

@@ -41,9 +41,8 @@
             if(error)
                 NSLog(@"Error sharing: %@", error.localizedDescription);
             else{
-                [self.tabBarController setSelectedIndex:0];
-                
-                // CHANGE THIS LATER IF YOU DO MODALLY INSTEAD
+                //[self.tabBarController setSelectedIndex:0];
+                [self dismissViewControllerAnimated:YES completion:nil];
             }
         }];
     }
