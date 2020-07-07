@@ -105,13 +105,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="teh-kr-xwO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2329" y="127"/>
+            <point key="canvasLocation" x="2432" y="-279"/>
         </scene>
-        <!--Item-->
+        <!--Feed-->
         <scene sceneID="zyG-QH-mc6">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="dTv-Ca-ybL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="TWA-Gv-0rf"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="feed_tab" id="TWA-Gv-0rf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mQE-Bd-yuB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -124,7 +124,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LAe-uo-5tU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1616" y="127"/>
+            <point key="canvasLocation" x="1774" y="-279"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="FJ3-ju-kCD">
@@ -138,11 +138,104 @@
                     </tabBar>
                     <connections>
                         <segue destination="dTv-Ca-ybL" kind="relationship" relationship="viewControllers" id="bxN-Be-Srn"/>
+                        <segue destination="llk-fq-x2D" kind="relationship" relationship="viewControllers" id="Zw9-UW-PnF"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ndb-u3-hP7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="912" y="127"/>
         </scene>
+        <!--New Post View Controller-->
+        <scene sceneID="lYr-o0-2ar">
+            <objects>
+                <viewController id="6Il-oO-5UO" customClass="NewPostViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="R7E-St-nMy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RPf-7S-bY0">
+                                <rect key="frame" x="20" y="76" width="100" height="100"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="Ig3-jU-qJ3"/>
+                                    <constraint firstAttribute="height" constant="100" id="o0V-mv-IgH"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="XWZ-5G-d1W" appends="YES" id="xIE-L5-hA5"/>
+                                </connections>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="750" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NGx-Ms-ktC">
+                                <rect key="frame" x="124" y="76" width="270" height="33"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="NGx-Ms-ktC" firstAttribute="trailing" secondItem="R7E-St-nMy" secondAttribute="trailingMargin" id="3iA-Y0-KIh"/>
+                            <constraint firstItem="NGx-Ms-ktC" firstAttribute="top" secondItem="R7E-St-nMy" secondAttribute="topMargin" constant="20" id="aDy-EY-Jfi"/>
+                            <constraint firstItem="RPf-7S-bY0" firstAttribute="leading" secondItem="R7E-St-nMy" secondAttribute="leadingMargin" id="fWf-YZ-RjE"/>
+                            <constraint firstItem="RPf-7S-bY0" firstAttribute="top" secondItem="R7E-St-nMy" secondAttribute="topMargin" constant="20" id="lBB-61-mzS"/>
+                            <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="NGx-Ms-ktC" secondAttribute="bottom" constant="20" id="oDd-vk-WI3"/>
+                            <constraint firstItem="NGx-Ms-ktC" firstAttribute="leading" secondItem="RPf-7S-bY0" secondAttribute="trailing" constant="4" id="zoj-FN-YEW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FRa-XG-K5K"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="8Uw-ln-izr" appends="YES" id="RXB-EA-Ukb"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" id="sDQ-r4-Vge">
+                        <barButtonItem key="rightBarButtonItem" title="Share" id="dez-Ze-Snh">
+                            <connections>
+                                <action selector="didTapShare:" destination="6Il-oO-5UO" id="cH3-wP-ZzG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="captionTextView" destination="NGx-Ms-ktC" id="nVm-K7-Ls8"/>
+                        <outlet property="photoView" destination="RPf-7S-bY0" id="NAo-Ia-hmp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hdu-3P-bJF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="8Uw-ln-izr">
+                    <connections>
+                        <action selector="onTapAway:" destination="6Il-oO-5UO" id="h2t-ks-4UA"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="XWZ-5G-d1W">
+                    <connections>
+                        <action selector="onTapAddImage:" destination="6Il-oO-5UO" id="LBf-U1-bOG"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2430.434782608696" y="414.50892857142856"/>
+        </scene>
+        <!--New Post-->
+        <scene sceneID="tdX-73-SnN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="llk-fq-x2D" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="New Post" image="insta_camera_btn" id="YaZ-ei-hzv"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LpM-py-zyV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6Il-oO-5UO" kind="relationship" relationship="rootViewController" id="GUY-kR-UNd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="naq-g3-Qz7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1773.913043478261" y="414.50892857142856"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="feed_tab" width="25" height="25"/>
+        <image name="insta_camera_btn" width="25" height="25"/>
+    </resources>
 </document>

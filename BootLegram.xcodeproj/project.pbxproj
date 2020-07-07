@@ -20,6 +20,8 @@
 		F90D40B324B3E39C00F0EDE3 /* BootLegramUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F90D40B224B3E39C00F0EDE3 /* BootLegramUITests.m */; };
 		F90D40C324B502FF00F0EDE3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F90D40C224B502FF00F0EDE3 /* LoginViewController.m */; };
 		F90D40C624B511FA00F0EDE3 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F90D40C524B511FA00F0EDE3 /* FeedViewController.m */; };
+		F90D40C924B51AA800F0EDE3 /* NewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F90D40C824B51AA800F0EDE3 /* NewPostViewController.m */; };
+		F90D40CD24B5211900F0EDE3 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = F90D40CC24B5211900F0EDE3 /* Post.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,10 @@
 		F90D40C224B502FF00F0EDE3 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		F90D40C424B511FA00F0EDE3 /* FeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
 		F90D40C524B511FA00F0EDE3 /* FeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
+		F90D40C724B51AA800F0EDE3 /* NewPostViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewPostViewController.h; sourceTree = "<group>"; };
+		F90D40C824B51AA800F0EDE3 /* NewPostViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewPostViewController.m; sourceTree = "<group>"; };
+		F90D40CB24B5211900F0EDE3 /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
+		F90D40CC24B5211900F0EDE3 /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +153,8 @@
 		F90D408A24B3E39B00F0EDE3 /* BootLegram */ = {
 			isa = PBXGroup;
 			children = (
+				F90D40CB24B5211900F0EDE3 /* Post.h */,
+				F90D40CC24B5211900F0EDE3 /* Post.m */,
 				F90D40C024B502E900F0EDE3 /* View Controllers */,
 				F90D408B24B3E39B00F0EDE3 /* AppDelegate.h */,
 				F90D408C24B3E39B00F0EDE3 /* AppDelegate.m */,
@@ -186,6 +194,8 @@
 				F90D40C224B502FF00F0EDE3 /* LoginViewController.m */,
 				F90D40C424B511FA00F0EDE3 /* FeedViewController.h */,
 				F90D40C524B511FA00F0EDE3 /* FeedViewController.m */,
+				F90D40C724B51AA800F0EDE3 /* NewPostViewController.h */,
+				F90D40C824B51AA800F0EDE3 /* NewPostViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -431,8 +441,10 @@
 				F90D40C324B502FF00F0EDE3 /* LoginViewController.m in Sources */,
 				F90D40C624B511FA00F0EDE3 /* FeedViewController.m in Sources */,
 				F90D408D24B3E39B00F0EDE3 /* AppDelegate.m in Sources */,
+				F90D40C924B51AA800F0EDE3 /* NewPostViewController.m in Sources */,
 				F90D409E24B3E39C00F0EDE3 /* main.m in Sources */,
 				F90D409024B3E39B00F0EDE3 /* SceneDelegate.m in Sources */,
+				F90D40CD24B5211900F0EDE3 /* Post.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
