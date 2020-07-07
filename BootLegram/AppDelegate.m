@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Parse/Parse.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,24 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    ParseClientConfiguration *configuration = [ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
+      configuration.applicationId = @"parseInstagram";
+      configuration.server = @"https://bootlegram.herokuapp.com/parse";
+    }];
+    
+    [Parse initializeWithConfiguration:configuration];
+    
+//    PFObject *gameScore = [PFObject objectWithClassName:@"GameScore"];
+//    gameScore[@"score"] = @1337;
+//    gameScore[@"playerName"] = @"Sean Plott";
+//    gameScore[@"cheatMode"] = @NO;
+//    [gameScore saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//      if (succeeded) {
+//         NSLog(@"Object saved!");
+//      } else {
+//         NSLog(@"Error: %@", error.description);
+//      }
+//    }];
     return YES;
 }
 
