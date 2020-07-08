@@ -24,6 +24,7 @@
 		F90D40CD24B5211900F0EDE3 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = F90D40CC24B5211900F0EDE3 /* Post.m */; };
 		F94CFC2B24B65F0100765E09 /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F94CFC2A24B65F0100765E09 /* PostCell.m */; };
 		F94CFC3124B6750E00765E09 /* PostDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F94CFC3024B6750E00765E09 /* PostDetailViewController.m */; };
+		F94CFC3424B6898500765E09 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F94CFC3324B6898500765E09 /* ProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,8 @@
 		F94CFC2A24B65F0100765E09 /* PostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
 		F94CFC2F24B6750E00765E09 /* PostDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostDetailViewController.h; sourceTree = "<group>"; };
 		F94CFC3024B6750E00765E09 /* PostDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostDetailViewController.m; sourceTree = "<group>"; };
+		F94CFC3224B6898500765E09 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		F94CFC3324B6898500765E09 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +208,8 @@
 				F90D40C824B51AA800F0EDE3 /* NewPostViewController.m */,
 				F94CFC2F24B6750E00765E09 /* PostDetailViewController.h */,
 				F94CFC3024B6750E00765E09 /* PostDetailViewController.m */,
+				F94CFC3224B6898500765E09 /* ProfileViewController.h */,
+				F94CFC3324B6898500765E09 /* ProfileViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -460,6 +465,7 @@
 				F90D40C324B502FF00F0EDE3 /* LoginViewController.m in Sources */,
 				F90D40C624B511FA00F0EDE3 /* FeedViewController.m in Sources */,
 				F90D408D24B3E39B00F0EDE3 /* AppDelegate.m in Sources */,
+				F94CFC3424B6898500765E09 /* ProfileViewController.m in Sources */,
 				F94CFC2B24B65F0100765E09 /* PostCell.m in Sources */,
 				F90D40C924B51AA800F0EDE3 /* NewPostViewController.m in Sources */,
 				F90D409E24B3E39C00F0EDE3 /* main.m in Sources */,
