@@ -1,0 +1,6 @@
+framework module Pods_BootLegramTests {
+  umbrella header "Pods-BootLegramTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
