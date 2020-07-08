@@ -16,6 +16,7 @@
 @interface FeedViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray<Post *> *posts;
+@property (nonatomic, strong) UIRefreshControl * refreshControl;
 @end
 
 @implementation FeedViewController
@@ -25,7 +26,11 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    // Do any additional setup after loading the view.
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(getFeed) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
     [self getFeed];
 }
 - (IBAction)didTapLogout:(id)sender {
@@ -60,6 +65,7 @@
             NSLog(@"Error getting posts");
         }
     }];
+    [self.refreshControl endRefreshing];
 }
 
 #pragma mark - UITableViewDataSource
