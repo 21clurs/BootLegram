@@ -176,6 +176,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="authorLabel" destination="egS-Dv-vGi" id="o9P-gb-q4D"/>
+                                            <outlet property="authorLowerLabel" destination="vHy-8f-zTc" id="Zm4-F5-49n"/>
                                             <outlet property="captionLabel" destination="0z3-p7-dNH" id="NyM-Bg-Rlm"/>
                                             <outlet property="likesLabel" destination="53B-L8-hC0" id="eS6-0o-CHI"/>
                                             <outlet property="photoView" destination="kAD-h2-h4v" id="522-RH-IBx"/>
@@ -203,7 +204,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="insta_camera_btn" id="1EM-r0-cNU">
                             <connections>
-                                <segue destination="llk-fq-x2D" kind="presentation" id="Kkj-11-48D"/>
+                                <segue destination="llk-fq-x2D" kind="presentation" identifier="newPostSegue" id="Kkj-11-48D"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -310,7 +311,6 @@
         <!--Tab Bar Controller-->
         <scene sceneID="FJ3-ju-kCD">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ndb-u3-hP7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tabBarController storyboardIdentifier="AuthenticatedViewController" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="3iD-1x-asa" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="CWw-AU-1GV"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="33Q-Ai-VBZ">
@@ -323,6 +323,7 @@
                         <segue destination="ggI-UA-tgl" kind="relationship" relationship="viewControllers" id="cLV-IP-zKh"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ndb-u3-hP7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="912" y="127"/>
         </scene>

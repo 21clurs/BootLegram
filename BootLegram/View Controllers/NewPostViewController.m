@@ -47,6 +47,7 @@
             }
             else{
                 //[self.tabBarController setSelectedIndex:0];
+                [self.delegate didPost];
                 [self dismissViewControllerAnimated:YES completion:nil];
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
             }

@@ -7,10 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Post.h"
 
 NS_ASSUME_NONNULL_BEGIN
+@protocol NewPostViewControllerDelegate
+
+- (void)didPost;
+
+@end
 
 @interface NewPostViewController : UIViewController
+@property (weak, nonatomic)id<NewPostViewControllerDelegate>delegate;
 
 @end
 

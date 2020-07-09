@@ -13,8 +13,9 @@
 #import "Post.h"
 #import "PostCell.h"
 #import "PostDetailViewController.h"
+#import "NewPostViewController.h"
 
-@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource, NewPostViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray<Post *> *posts;
 @property (nonatomic, strong) UIRefreshControl * refreshControl;
@@ -27,6 +28,7 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(getFeed) forControlEvents:UIControlEventValueChanged];
@@ -80,6 +82,12 @@
     return cell;
 }
 
+#pragma mark - ComposeViewControllerDelegate
+
+- (void)didPost{
+    [self getFeed];
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -96,8 +104,13 @@
         Post *post = self.posts[indexPath.row];
         
         postDetailViewController.post = post;
-        
+    }
+    else if([segue.identifier isEqualToString:@"newPostSegue"]){
+        UINavigationController *navigationController = [segue destinationViewController];
+        NewPostViewController *newPostViewController =(NewPostViewController *)[navigationController topViewController];
+        newPostViewController.delegate = self;
     }
 }
+
 
 @end
