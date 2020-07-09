@@ -9,6 +9,7 @@
 #import "NewPostViewController.h"
 #import "UIKit/UIKit.h"
 #import "Post.h"
+#import "MBProgressHUD/MBProgressHUD.h"
 
 @interface NewPostViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *captionTextView;
@@ -33,21 +34,26 @@
 }
 
 - (IBAction)didTapShare:(id)sender {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     if (self.photoView.image != nil){
         NSString *captionText = self.captionTextView.text;
         if([captionText isEqualToString:@"Write a caption"]){
             captionText = @"";
         }
         [Post postUserImage:self.photoView.image withCaption:captionText withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-            if(error)
+            if(error){
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
                 NSLog(@"Error sharing: %@", error.localizedDescription);
+            }
             else{
                 //[self.tabBarController setSelectedIndex:0];
                 [self dismissViewControllerAnimated:YES completion:nil];
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
             }
         }];
     }
     else{
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error Sharing" message:@"Please select or take a photo to share your post" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}];
         [alert addAction:okAction];
