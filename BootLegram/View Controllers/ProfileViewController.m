@@ -34,9 +34,13 @@
 }
 
 - (void) loadProfilePicture{
-    self.profilePicView.image = nil;
+    //self.profilePicView.image = nil;
     if(PFUser.currentUser[@"profileImage"]){
         self.profilePicView.file = PFUser.currentUser[@"profileImage"];
+        [self.profilePicView loadInBackground];
+    }
+    else{
+        self.profilePicView.image = [UIImage imageNamed:@"default_profile_image"];
         [self.profilePicView loadInBackground];
     }
 }
@@ -101,11 +105,11 @@
     CGSize size = CGSizeMake(200, 200);
     UIImage *resizedImage = [self resizeImage:editedImage withSize:size];
     
-    [self loadProfilePicture];
-    
     NSData *imageData = UIImagePNGRepresentation(resizedImage);
     PFUser.currentUser[@"profileImage"] = [PFFileObject fileObjectWithName:@"profile_image.png" data:imageData];
     [PFUser.currentUser saveInBackground];
+    
+    [self loadProfilePicture];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }

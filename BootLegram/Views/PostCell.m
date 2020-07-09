@@ -27,8 +27,14 @@
     self.likesLabel.text = [NSString stringWithFormat:@"%@ Likes", post.likeCount];
     self.authorLabel.text = post.author.username;
     self.captionLabel.text = post.caption;
+    
     self.photoView.file = post.image;
     [self.photoView loadInBackground];
+    
+    if(post.author[@"profileImage"]){
+        self.profilePhotoView.file = post.author[@"profileImage"];
+        [self.profilePhotoView loadInBackground];
+    }
 }
 
 @end
