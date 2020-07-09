@@ -45,6 +45,7 @@
     // construct PFQuery
     PFQuery *postQuery = [Post query];
     [postQuery orderByDescending:@"createdAt"];
+    [postQuery whereKey:@"author" equalTo:[PFUser currentUser]];
     [postQuery includeKey:@"author"];
     postQuery.limit = 20;
 
