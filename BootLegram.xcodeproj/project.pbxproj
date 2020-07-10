@@ -25,6 +25,7 @@
 		F94CFC2B24B65F0100765E09 /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F94CFC2A24B65F0100765E09 /* PostCell.m */; };
 		F94CFC3124B6750E00765E09 /* PostDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F94CFC3024B6750E00765E09 /* PostDetailViewController.m */; };
 		F94CFC3424B6898500765E09 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F94CFC3324B6898500765E09 /* ProfileViewController.m */; };
+		F94CFC3724B90F3B00765E09 /* ProfileHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = F94CFC3624B90F3B00765E09 /* ProfileHeader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,8 @@
 		F94CFC3024B6750E00765E09 /* PostDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostDetailViewController.m; sourceTree = "<group>"; };
 		F94CFC3224B6898500765E09 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		F94CFC3324B6898500765E09 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		F94CFC3524B90F3B00765E09 /* ProfileHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileHeader.h; sourceTree = "<group>"; };
+		F94CFC3624B90F3B00765E09 /* ProfileHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileHeader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +222,8 @@
 			children = (
 				F94CFC2924B65F0100765E09 /* PostCell.h */,
 				F94CFC2A24B65F0100765E09 /* PostCell.m */,
+				F94CFC3524B90F3B00765E09 /* ProfileHeader.h */,
+				F94CFC3624B90F3B00765E09 /* ProfileHeader.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -470,6 +475,7 @@
 				F90D40C924B51AA800F0EDE3 /* NewPostViewController.m in Sources */,
 				F90D409E24B3E39C00F0EDE3 /* main.m in Sources */,
 				F90D409024B3E39B00F0EDE3 /* SceneDelegate.m in Sources */,
+				F94CFC3724B90F3B00765E09 /* ProfileHeader.m in Sources */,
 				F90D40CD24B5211900F0EDE3 /* Post.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

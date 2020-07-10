@@ -9,6 +9,8 @@
 #import "ProfileViewController.h"
 #import "PostCell.h"
 #import "Post.h"
+#import "ProfileHeader.h"
+
 @import Parse;
 
 @interface ProfileViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource>
@@ -33,7 +35,7 @@ NSString *HeaderViewIdentifier = @"TableViewHeaderView";
     self.tableView.delegate = self;
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
-    [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:HeaderViewIdentifier];
+    [self.tableView registerClass:[ProfileHeader class] forHeaderFooterViewReuseIdentifier:HeaderViewIdentifier];
     
     [self getPosts];
 }
@@ -101,7 +103,7 @@ NSString *HeaderViewIdentifier = @"TableViewHeaderView";
     
     NSData *imageData = UIImagePNGRepresentation(resizedImage);
     PFUser.currentUser[@"profileImage"] = [PFFileObject fileObjectWithName:@"profile_image.png" data:imageData];
-    [PFUser.currentUser saveInBackground];
+    //[PFUser.currentUser saveInBackground];
     [PFUser.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if(error != nil){
             NSLog(@"Error updating profile image");
@@ -132,7 +134,13 @@ NSString *HeaderViewIdentifier = @"TableViewHeaderView";
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HeaderViewIdentifier];
+    ProfileHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HeaderViewIdentifier];
+    
+    /*
+    for(UIView * view in header.subviews){
+        if(![view isEqual:header.contentView])
+            [view removeFromSuperview];
+    }
     
     PFImageView *profilePicView = [[PFImageView alloc] initWithFrame:CGRectMake(20, 20, 80, 80)];
     if(PFUser.currentUser[@"profileImage"]){
@@ -150,10 +158,9 @@ NSString *HeaderViewIdentifier = @"TableViewHeaderView";
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
     tapGestureRecognizer.numberOfTapsRequired = 1;
     [profilePicView addGestureRecognizer:tapGestureRecognizer];
-
+    
     [header.contentView addSubview:profilePicView];
-    
-    
+     
     CGRect labelFrame = CGRectMake(20, 108, self.tableView.contentSize.width, 20);
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:labelFrame];
     nameLabel.text = PFUser.currentUser.username;
@@ -162,6 +169,11 @@ NSString *HeaderViewIdentifier = @"TableViewHeaderView";
     nameLabel.textAlignment =  NSTextAlignmentLeft;
     nameLabel.textColor = [UIColor blackColor];
     [header.contentView addSubview:nameLabel];
+    */
+    
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
+    tapGestureRecognizer.numberOfTapsRequired = 1;
+    [header.profilePicView addGestureRecognizer:tapGestureRecognizer];
     
     return header;
 }
