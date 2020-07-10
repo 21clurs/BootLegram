@@ -14,11 +14,13 @@
 #import "PostCell.h"
 #import "PostDetailViewController.h"
 #import "NewPostViewController.h"
+#import "MBProgressHUD/MBProgressHUD.h"
 
-@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource, NewPostViewControllerDelegate>
+@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, NewPostViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray<Post *> *posts;
 @property (nonatomic, strong) UIRefreshControl * refreshControl;
+@property (assign, nonatomic) BOOL isMoreDataLoading;
 @end
 
 @implementation FeedViewController
@@ -71,6 +73,34 @@
     [self.refreshControl endRefreshing];
 }
 
+- (void) loadMorePosts{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    PFQuery *postQuery = [Post query];
+    [postQuery orderByDescending:@"createdAt"];
+    [postQuery includeKey:@"author"];
+    postQuery.limit = 20;
+    postQuery.skip += 20;
+
+    // fetch data asynchronously
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable morePosts, NSError * _Nullable error) {
+        if (morePosts) {
+            // do something with the data fetched
+            [self.posts addObjectsFromArray:morePosts];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            [self.tableView reloadData];
+        }
+        else {
+            // handle error
+            NSLog(@"Error getting more posts");
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        }
+    }];
+    [self.refreshControl endRefreshing];
+    
+}
+
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.posts.count;
@@ -86,6 +116,23 @@
     [tableView deselectRowAtIndexPath:indexPath animated:true];
 }
 
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+     // Handle scroll behavior here
+    if(!self.isMoreDataLoading){
+        int scrollViewContentHeight = self.tableView.contentSize.height;
+        int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
+        
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
+            self.isMoreDataLoading = true;
+            
+            [self loadMorePosts];
+            // ... Code to load more results ...
+        }
+        
+    }
+}
 #pragma mark - ComposeViewControllerDelegate
 
 - (void)didPost{

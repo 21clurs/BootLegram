@@ -36,6 +36,9 @@
         self.profilePhotoView.file = post.author[@"profileImage"];
         [self.profilePhotoView loadInBackground];
     }
+    else{
+        self.profilePhotoView.image = [UIImage imageNamed:@"default_profile_image"];
+    }
 }
 
 @end
