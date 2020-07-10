@@ -14,12 +14,17 @@
 @interface ProfileViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray<Post *> *posts;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet PFImageView *profilePicView;
+//@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+//@property (weak, nonatomic) IBOutlet PFImageView *profilePicView;
 
 @end
 
 @implementation ProfileViewController
+
+NSString *CellIdentifier = @"TableViewCell";
+NSString *HeaderViewIdentifier = @"TableViewHeaderView";
+
+#pragma mark - Private Methods
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,22 +32,10 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-    self.nameLabel.text = PFUser.currentUser.username;
-    [self loadProfilePicture];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
+    [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:HeaderViewIdentifier];
     
     [self getPosts];
-}
-
-- (void) loadProfilePicture{
-    //self.profilePicView.image = nil;
-    if(PFUser.currentUser[@"profileImage"]){
-        self.profilePicView.file = PFUser.currentUser[@"profileImage"];
-        [self.profilePicView loadInBackground];
-    }
-    else{
-        self.profilePicView.image = [UIImage imageNamed:@"default_profile_image"];
-        [self.profilePicView loadInBackground];
-    }
 }
 
 - (void) getPosts{
@@ -67,7 +60,22 @@
     }];
 }
 
-- (IBAction)onTapChangeProfile:(id)sender {
+- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
+
+- (IBAction)didTap:(UITapGestureRecognizer *)sender {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
@@ -81,20 +89,6 @@
     }
     
     [self presentViewController:imagePickerVC animated:YES completion:nil];
-}
-
-- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
-    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
-    
-    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
-    resizeImageView.image = image;
-    
-    UIGraphicsBeginImageContext(size);
-    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return newImage;
 }
 
 #pragma mark - UIImagePickerControllerDelegate
@@ -114,7 +108,7 @@
             [self dismissViewControllerAnimated:YES completion:nil];
         }
         else{
-            [self loadProfilePicture];
+            [self.tableView reloadData];
             [self dismissViewControllerAnimated:YES completion:nil];
         }
     }];
@@ -131,6 +125,49 @@
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     cell.post = self.posts[indexPath.row];
     return cell;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HeaderViewIdentifier];
+    
+    PFImageView *profilePicView = [[PFImageView alloc] initWithFrame:CGRectMake(20, 20, 80, 80)];
+    if(PFUser.currentUser[@"profileImage"]){
+        profilePicView.file = PFUser.currentUser[@"profileImage"];
+    }
+    else{
+        profilePicView.image = [UIImage imageNamed:@"default_profile_image"];
+    }
+    [profilePicView loadInBackground];
+    
+    profilePicView.layer.cornerRadius = 40;
+    profilePicView.layer.masksToBounds = YES;
+    
+    [profilePicView setUserInteractionEnabled:YES];
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
+    tapGestureRecognizer.numberOfTapsRequired = 1;
+    [profilePicView addGestureRecognizer:tapGestureRecognizer];
+
+    [header.contentView addSubview:profilePicView];
+    
+    
+    CGRect labelFrame = CGRectMake(20, 108, self.tableView.contentSize.width, 20);
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame:labelFrame];
+    nameLabel.text = PFUser.currentUser.username;
+    nameLabel.numberOfLines = 1;
+    nameLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+    nameLabel.textAlignment =  NSTextAlignmentLeft;
+    nameLabel.textColor = [UIColor blackColor];
+    [header.contentView addSubview:nameLabel];
+    
+    return header;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 140;
+    // Don't love that this is hard coded
 }
 
 /*

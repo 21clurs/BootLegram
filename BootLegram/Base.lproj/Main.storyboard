@@ -344,36 +344,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_profile_image" translatesAutoresizingMaskIntoConstraints="NO" id="nAP-FX-5xY" customClass="PFImageView">
-                                <rect key="frame" x="20" y="76" width="80" height="80"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" red="0.99992352724075317" green="1" blue="0.99988299608230591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="Ev2-3O-Lek"/>
-                                    <constraint firstAttribute="width" constant="80" id="JOx-o3-aCU"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="40"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="JAy-pT-cLJ" appends="YES" id="qlS-Kf-Sgw"/>
-                                </connections>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLd-U9-1pX">
-                                <rect key="frame" x="20" y="164" width="50" height="22"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rEm-b7-UwK">
-                                <rect key="frame" x="0.0" y="194" width="414" height="648"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="rEm-b7-UwK">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="513" id="k9h-vH-pZh" customClass="PostCell">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="513"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="513"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="k9h-vH-pZh" id="xRS-U4-bUQ">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="513"/>
@@ -417,6 +393,7 @@
                                                 <constraint firstItem="rak-1u-RN9" firstAttribute="leading" secondItem="xRS-U4-bUQ" secondAttribute="leadingMargin" id="NTn-pJ-ZVO"/>
                                                 <constraint firstItem="vUh-eE-JaJ" firstAttribute="top" secondItem="ubI-CN-SDL" secondAttribute="bottom" constant="4" id="QIX-Og-MXk"/>
                                                 <constraint firstItem="ubI-CN-SDL" firstAttribute="top" secondItem="1h0-2c-Ihz" secondAttribute="bottom" constant="8" id="VHy-Yy-O22"/>
+                                                <constraint firstItem="1h0-2c-Ihz" firstAttribute="top" secondItem="xRS-U4-bUQ" secondAttribute="top" id="c4D-WS-dZL"/>
                                                 <constraint firstItem="rak-1u-RN9" firstAttribute="top" secondItem="vUh-eE-JaJ" secondAttribute="bottom" constant="4" id="exP-97-NVT"/>
                                                 <constraint firstAttribute="trailing" secondItem="1h0-2c-Ihz" secondAttribute="trailing" id="g7F-Xb-UIv"/>
                                                 <constraint firstItem="vUh-eE-JaJ" firstAttribute="leading" secondItem="xRS-U4-bUQ" secondAttribute="leadingMargin" id="hD0-ig-OhU"/>
@@ -435,12 +412,8 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="nAP-FX-5xY" firstAttribute="leading" secondItem="c3z-kT-9bd" secondAttribute="leadingMargin" id="DRA-yA-Fv7"/>
-                            <constraint firstItem="nAP-FX-5xY" firstAttribute="top" secondItem="c3z-kT-9bd" secondAttribute="topMargin" constant="20" id="J8k-4M-zFX"/>
-                            <constraint firstItem="kLd-U9-1pX" firstAttribute="top" secondItem="nAP-FX-5xY" secondAttribute="bottom" constant="8" id="XLO-Jn-JOO"/>
+                            <constraint firstItem="rEm-b7-UwK" firstAttribute="top" secondItem="c3z-kT-9bd" secondAttribute="top" id="S8p-2j-xUw"/>
                             <constraint firstItem="rEm-b7-UwK" firstAttribute="leading" secondItem="c3z-kT-9bd" secondAttribute="leading" id="hbv-NK-U43"/>
-                            <constraint firstItem="rEm-b7-UwK" firstAttribute="top" secondItem="kLd-U9-1pX" secondAttribute="bottom" constant="8" id="ixq-34-DWc"/>
-                            <constraint firstItem="kLd-U9-1pX" firstAttribute="leading" secondItem="c3z-kT-9bd" secondAttribute="leadingMargin" id="nHc-Kp-KqR"/>
                             <constraint firstAttribute="bottom" secondItem="rEm-b7-UwK" secondAttribute="bottom" id="p28-i7-G6U"/>
                             <constraint firstAttribute="trailing" secondItem="rEm-b7-UwK" secondAttribute="trailing" id="r1p-K0-F0I"/>
                         </constraints>
@@ -448,8 +421,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="fcu-sC-nhP"/>
                     <connections>
-                        <outlet property="nameLabel" destination="kLd-U9-1pX" id="Tk8-On-VOD"/>
-                        <outlet property="profilePicView" destination="nAP-FX-5xY" id="tsz-Qi-Rn9"/>
                         <outlet property="tableView" destination="rEm-b7-UwK" id="jQc-h3-jho"/>
                     </connections>
                 </viewController>

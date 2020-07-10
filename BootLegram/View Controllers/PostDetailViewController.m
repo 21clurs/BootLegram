@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timestampLabel;
 
+
 @end
 
 @implementation PostDetailViewController
@@ -48,8 +49,17 @@
         formatter.dateFormat = @"MMM d, yyyy";
         self.timestampLabel.text = [NSString stringWithFormat:@"%@",[formatter stringFromDate:date]];
     }
-    
-    
+}
+
+- (void) reloadData{
+    self.likesLabel.text = [NSString stringWithFormat:@"%@ Likes", self.post.likeCount];
+}
+
+- (IBAction)onDoubleTap:(id)sender {
+    NSLog(@"likeee");
+    self.post.likeCount = @([self.post.likeCount floatValue] + 1);
+    [self.post saveInBackground];
+    [self reloadData];
 }
 
 /*
