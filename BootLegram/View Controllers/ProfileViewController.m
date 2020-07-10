@@ -108,10 +108,17 @@
     NSData *imageData = UIImagePNGRepresentation(resizedImage);
     PFUser.currentUser[@"profileImage"] = [PFFileObject fileObjectWithName:@"profile_image.png" data:imageData];
     [PFUser.currentUser saveInBackground];
-    
-    [self loadProfilePicture];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [PFUser.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if(error != nil){
+            NSLog(@"Error updating profile image");
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+        else{
+            [self loadProfilePicture];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+    }];
+   
 }
 
 #pragma mark - UITableViewDataSource
