@@ -56,6 +56,9 @@ GIF created with [Recordit](http://www.recordit.co).
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
 
 - [AFNetworking](https://github.com/AFNetworking/AFNetworking) - networking task library
+- [DateTools](https://github.com/MatthewYork/DateTools) - Dates and times made easy in iOS
+- [MBProgressHUD](https://github.com/matej/MBProgressHUD) - an iOS activity indicator view
+- [Parse](https://github.com/parse-community/Parse-SDK-iOS-OSX) - A library that gives access to the Parse Server backend
 
 
 ## Notes
