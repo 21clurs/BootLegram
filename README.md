@@ -60,7 +60,8 @@ List an 3rd party libraries, icons, graphics, or other assets you used in your a
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+- Took longer than expected to have the profile photo and name label scrollable, and still unsure if my implementation is the most optimal. I did not really know how to work with the UITableViewHeaderHeaderFooterView subclass that I ended up using, and using that in conjunction with the image selector was definitely a challenge.
+- My 'likes' mechanism, although it works, seems buggy at times when I test it with Parse.
 
 ## License
 
