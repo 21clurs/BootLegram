@@ -25,6 +25,8 @@
 
 @implementation FeedViewController
 
+#pragma mark - Private Methods
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -38,6 +40,7 @@
     
     [self getFeed];
 }
+
 - (IBAction)didTapLogout:(id)sender {
     SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -59,11 +62,13 @@
     postQuery.limit = 20;
 
     // fetch data asynchronously
+    __weak typeof(self) weakSelf = self;
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
+        __strong typeof(self) strongSelf = weakSelf;
         if (posts) {
             // do something with the data fetched
-            self.posts = [posts mutableCopy];
-            [self.tableView reloadData];
+            strongSelf.posts = [posts mutableCopy];
+            [strongSelf.tableView reloadData];
         }
         else {
             // handle error
@@ -82,15 +87,17 @@
     postQuery.limit = 20;
     postQuery.skip += 20;
 
+    __weak typeof(self) weakSelf = self;
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable morePosts, NSError * _Nullable error) {
+        __strong typeof(self) strongSelf = weakSelf;
         if (morePosts) {
-            [self.posts addObjectsFromArray:morePosts];
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            [self.tableView reloadData];
+            [strongSelf.posts addObjectsFromArray:morePosts];
+            [MBProgressHUD hideHUDForView:strongSelf.view animated:YES];
+            [strongSelf.tableView reloadData];
         }
         else {
             NSLog(@"Error getting more posts");
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            [MBProgressHUD hideHUDForView:strongSelf.view animated:YES];
         }
     }];
     [self.refreshControl endRefreshing];
@@ -125,7 +132,6 @@
             self.isMoreDataLoading = true;
             
             [self loadMorePosts];
-            // ... Code to load more results ...
         }
         
     }
@@ -138,14 +144,11 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     
     if([segue.identifier isEqualToString:@"detailSegue"]){
         UINavigationController *navigationController = [segue destinationViewController];
-        PostDetailViewController *postDetailViewController =(PostDetailViewController *)[navigationController topViewController];
+        PostDetailViewController *postDetailViewController = (PostDetailViewController *)[navigationController topViewController];
         
         PostCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];

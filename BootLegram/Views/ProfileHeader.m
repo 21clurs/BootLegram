@@ -16,6 +16,7 @@
     if(self.profilePicView == nil){
         self.profilePicView = [[PFImageView alloc] initWithFrame:CGRectMake(20, 20, 80, 80)];
     }
+    
     if(PFUser.currentUser[@"profileImage"]){
         self.profilePicView.file = PFUser.currentUser[@"profileImage"];
     }

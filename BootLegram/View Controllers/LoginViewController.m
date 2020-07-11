@@ -17,9 +17,10 @@
 
 @implementation LoginViewController
 
+#pragma mark - Private Methods
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (IBAction)didTapLogIn:(id)sender {
@@ -36,18 +37,20 @@
     NSString *username = self.usernameField.text;
     NSString *password = self.passwordField.text;
     
+    __weak typeof(self) weakSelf = self;
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
+        __strong typeof(self) strongSelf = weakSelf;
         if (error != nil) {
             NSLog(@"User log in failed: %@", error.localizedDescription);
             
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error Logging In" message:[NSString stringWithFormat:@"Error: %@", error.localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}];
             [alert addAction:okAction];
-            [self presentViewController:alert animated:YES completion:^{}];
+            [strongSelf presentViewController:alert animated:YES completion:^{}];
         } else {
             NSLog(@"User logged in successfully");
             
-            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+            [strongSelf performSegueWithIdentifier:@"loginSegue" sender:nil];
         }
     }];
 }
@@ -57,6 +60,7 @@
     newUser.username = self.usernameField.text;
     newUser.password = self.passwordField.text;
     
+    __weak typeof(self) weakSelf = self;
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if(error != nil){
             NSLog(@"Error: %@", error.localizedDescription);
@@ -64,7 +68,7 @@
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error Signing Up" message:[NSString stringWithFormat:@"Error: %@", error.localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}];
             [alert addAction:okAction];
-            [self presentViewController:alert animated:YES completion:^{}];
+            [weakSelf presentViewController:alert animated:YES completion:^{}];
         }
         else{
             NSLog(@"User registered successfully!");
@@ -91,15 +95,5 @@
     }
     return NO;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

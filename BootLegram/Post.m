@@ -33,6 +33,8 @@
     [newPost saveInBackgroundWithBlock: completion];
 }
 
+#pragma mark - Private Methods
+
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
  
     // check if image is not nil

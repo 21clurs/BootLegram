@@ -47,10 +47,12 @@ NSString *HeaderViewIdentifier = @"TableViewHeaderView";
     [postQuery includeKey:@"author"];
     postQuery.limit = 20;
 
+    __weak typeof(self) weakSelf = self;
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
+        __strong typeof(self) strongSelf = weakSelf;
         if (posts) {
-            self.posts = [posts mutableCopy];
-            [self.tableView reloadData];
+            strongSelf.posts = [posts mutableCopy];
+            [strongSelf.tableView reloadData];
         }
         else {
             NSLog(@"Error getting profile posts");
@@ -100,18 +102,19 @@ NSString *HeaderViewIdentifier = @"TableViewHeaderView";
     NSData *imageData = UIImagePNGRepresentation(resizedImage);
     PFUser.currentUser[@"profileImage"] = [PFFileObject fileObjectWithName:@"profile_image.png" data:imageData];
     
+    __weak typeof(self) weakSelf = self;
     [PFUser.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        __strong typeof(self) strongSelf = weakSelf;
         if(error != nil){
             NSLog(@"Error updating profile image");
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [strongSelf dismissViewControllerAnimated:YES completion:nil];
         }
         else{
             //[self.tableView reloadData];
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [strongSelf.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [strongSelf dismissViewControllerAnimated:YES completion:nil];
         }
     }];
-   
 }
 
 #pragma mark - UITableViewDataSource
@@ -132,7 +135,11 @@ NSString *HeaderViewIdentifier = @"TableViewHeaderView";
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     ProfileHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HeaderViewIdentifier];
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
+    tapGestureRecognizer.numberOfTapsRequired = 1;
+    [header.profilePicView addGestureRecognizer:tapGestureRecognizer];
     
+    return header;
     /*
     for(UIView * view in header.subviews){
         if(![view isEqual:header.contentView])
@@ -167,25 +174,10 @@ NSString *HeaderViewIdentifier = @"TableViewHeaderView";
     nameLabel.textColor = [UIColor blackColor];
     [header.contentView addSubview:nameLabel];
     */
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
-    tapGestureRecognizer.numberOfTapsRequired = 1;
-    [header.profilePicView addGestureRecognizer:tapGestureRecognizer];
-    
-    return header;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 140;
     // Don't love that this is hard coded
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

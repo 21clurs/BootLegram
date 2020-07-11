@@ -19,6 +19,8 @@
 
 @implementation NewPostViewController
 
+#pragma mark - Private Methods
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -40,15 +42,18 @@
         if([captionText isEqualToString:@"Write a caption"]){
             captionText = @"";
         }
+        
+        __weak typeof(self) weakSelf = self;
         [Post postUserImage:self.photoView.image withCaption:captionText withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            __strong typeof(self) strongSelf = weakSelf;
             if(error){
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                [MBProgressHUD hideHUDForView:strongSelf.view animated:YES];
                 NSLog(@"Error sharing: %@", error.localizedDescription);
             }
             else{
                 //[self.tabBarController setSelectedIndex:0];
-                [self.delegate didPost];
-                [self dismissViewControllerAnimated:YES completion:nil];
+                [strongSelf.delegate didPost];
+                [strongSelf dismissViewControllerAnimated:YES completion:nil];
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
             }
         }];
@@ -75,7 +80,6 @@
     }
     
     [self presentViewController:imagePickerVC animated:YES completion:nil];
-    // Do any additional setup after loading the view.
 }
 
 
@@ -97,17 +101,13 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
-    // Get the image captured by the UIImagePickerController
-    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+    // UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     
     CGSize size = CGSizeMake(500, 500);
     UIImage *resizedImage = [self resizeImage:editedImage withSize:size];
-    
     self.photoView.image = resizedImage;
-    // Do something with the images (based on your use case)
     
-    // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -117,7 +117,7 @@
 {
     if ([textView.text isEqualToString:@"Write a caption"]) {
          textView.text = @"";
-         textView.textColor = [UIColor blackColor]; //optional
+         textView.textColor = [UIColor blackColor];
     }
     [textView becomeFirstResponder];
 }
@@ -125,7 +125,7 @@
 {
     if ([textView.text isEqualToString:@""]) {
         textView.text = @"Write a caption";
-        textView.textColor = [UIColor lightGrayColor]; //optional
+        textView.textColor = [UIColor lightGrayColor];
     }
     [textView resignFirstResponder];
 }
