@@ -24,7 +24,7 @@
 - (void) setPost:(Post *)post{
     _post = post;
     
-    self.likesLabel.text = [NSString stringWithFormat:@"%@ Likes", post.likeCount];
+    //self.likesLabel.text = [NSString stringWithFormat:@"%@ Likes", post.likeCount];
     self.authorLabel.text = post.author.username;
     self.authorLowerLabel.text = post.author.username;
     self.captionLabel.text = post.caption;

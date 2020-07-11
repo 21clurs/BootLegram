@@ -82,16 +82,13 @@
     postQuery.limit = 20;
     postQuery.skip += 20;
 
-    // fetch data asynchronously
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable morePosts, NSError * _Nullable error) {
         if (morePosts) {
-            // do something with the data fetched
             [self.posts addObjectsFromArray:morePosts];
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             [self.tableView reloadData];
         }
         else {
-            // handle error
             NSLog(@"Error getting more posts");
             [MBProgressHUD hideHUDForView:self.view animated:YES];
         }
