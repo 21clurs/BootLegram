@@ -1,4 +1,4 @@
-# Project 4 - *BootLegrame*
+# Project 4 - *BootLegram*
 
 **BootLegram** is a photo sharing app using Parse as its backend.
 
@@ -22,7 +22,7 @@ The following **optional** features are implemented:
 - [ ] Style the login page to look like the real Instagram login page.
 - [x] Style the feed to look like the real Instagram feed.
 - [x] User can use a tab bar to switch between all "Instagram" posts and posts published only by the user. AKA, tabs for Home Feed and Profile
-- [ ] User can load more posts once he or she reaches the bottom of the feed using infinite scrolling.
+- [x] User can load more posts once he or she reaches the bottom of the feed using infinite scrolling.
 - [x] Show the username and creation time for each post
 - [x] After the user submits a new post, show a progress HUD while the post is being uploaded to Parse
 - User Profiles:
@@ -30,17 +30,18 @@ The following **optional** features are implemented:
   - [x] Display the profile photo with each post
   - [ ] Tapping on a post's username or profile photo goes to that user's profile page
 - [ ] User can comment on a post and see all comments for each post in the post details screen.
-- [ ] User can like a post and see number of likes for each post in the post details screen.
+- [x] User can like a post and see number of likes for each post in the post details screen.
 - [ ] Implement a custom camera view.
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [x] Heart showing status of whether or not the user has liked a post is visible in the post details screen
+- [x] Profile picture and name at the top of profile view scroll with the table view (i.e. included in the table view header)
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. Although I have a rudimentary 'likes' functionality working, I have a lot of concerns about my implementation. It seems finicky and I was having odd behavior while testing with Parse.
+2. Generally, I'd like to get a better understanding of Parse. I feel like I have some confusion over things that seem like they should be simple, and I think understanding what Parse is doing better will help me work with it better.
 
 ## Video Walkthrough
 
