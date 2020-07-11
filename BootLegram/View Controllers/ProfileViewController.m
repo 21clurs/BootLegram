@@ -41,23 +41,19 @@ NSString *HeaderViewIdentifier = @"TableViewHeaderView";
 }
 
 - (void) getPosts{
-    // construct PFQuery
     PFQuery *postQuery = [Post query];
     [postQuery orderByDescending:@"createdAt"];
     [postQuery whereKey:@"author" equalTo:[PFUser currentUser]];
     [postQuery includeKey:@"author"];
     postQuery.limit = 20;
 
-    // fetch data asynchronously
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
         if (posts) {
-            // do something with the data fetched
             self.posts = [posts mutableCopy];
             [self.tableView reloadData];
         }
         else {
-            // handle error
-            NSLog(@"Error getting posts");
+            NSLog(@"Error getting profile posts");
         }
     }];
 }
@@ -103,14 +99,15 @@ NSString *HeaderViewIdentifier = @"TableViewHeaderView";
     
     NSData *imageData = UIImagePNGRepresentation(resizedImage);
     PFUser.currentUser[@"profileImage"] = [PFFileObject fileObjectWithName:@"profile_image.png" data:imageData];
-    //[PFUser.currentUser saveInBackground];
+    
     [PFUser.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if(error != nil){
             NSLog(@"Error updating profile image");
             [self dismissViewControllerAnimated:YES completion:nil];
         }
         else{
-            [self.tableView reloadData];
+            //[self.tableView reloadData];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
             [self dismissViewControllerAnimated:YES completion:nil];
         }
     }];
@@ -170,7 +167,6 @@ NSString *HeaderViewIdentifier = @"TableViewHeaderView";
     nameLabel.textColor = [UIColor blackColor];
     [header.contentView addSubview:nameLabel];
     */
-    
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
     tapGestureRecognizer.numberOfTapsRequired = 1;
     [header.profilePicView addGestureRecognizer:tapGestureRecognizer];
